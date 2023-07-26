@@ -1,18 +1,36 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
+import 'chart.js/auto';
+import { StyledChart } from './styledChart';
+
+Chart.register(ArcElement, Tooltip, Legend);
 
 const UseChart = ({ data }) => {
   const chartData = {
-    labels: data.map((user) => `${user.firstName} ${user.lastName}`),
+    labels: data.map((user) => `${user.first_name} ${user.last_name}`),
     datasets: [
       {
         data: data.map((user) => user.participation),
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'], // Pode adicionar mais cores se houver mais dados
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
       },
     ],
   };
 
-  return <Pie data={chartData} />;
+  const options = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const label = context.label || '';
+            const value = context.formattedValue || '';
+            return `${label}: ${value}%`;
+          },
+        },
+      },
+    },
+  };
+
+  return <StyledChart data={chartData} options={options} />;
 };
 
 export default UseChart;

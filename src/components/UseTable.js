@@ -1,16 +1,17 @@
 import React from 'react';
 import { useTable } from 'react-table';
+import { StyledTable } from './styledTable';
 
 const UseTable = ({ data }) => {
   const columns = React.useMemo(
     () => [
       {
         Header: 'First Name',
-        accessor: 'firstName',
+        accessor: 'first_name',
       },
       {
         Header: 'Last Name',
-        accessor: 'lastName',
+        accessor: 'last_name',
       },
       {
         Header: 'Participation',
@@ -29,7 +30,7 @@ const UseTable = ({ data }) => {
   } = useTable({ columns, data });
 
   return (
-    <table {...getTableProps()}>
+    <StyledTable {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -51,7 +52,7 @@ const UseTable = ({ data }) => {
           );
         })}
       </tbody>
-    </table>
+    </StyledTable>
   );
 };
 

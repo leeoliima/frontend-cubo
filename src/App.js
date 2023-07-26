@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Form from './components/UseForm';
-import Table from './components/UseTable';
-import Chart from './components/UseChart';
+import UseForm from './components/UseForm';
+import UseTable from './components/UseTable';
+import UseChart from './components/UseChart';
+import { StyledApp, ChartAndTableContainer } from './styledApp';
 
 const App = () => {
   const [users, setUsers] = useState([]);
 
-  // Função para buscar a lista de usuários do backend
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/users'); // Rota para obter a lista de usuários
+      const response = await axios.get('http://localhost:3003/users');
       setUsers(response.data);
     } catch (error) {
       console.error(error);
@@ -20,19 +20,20 @@ const App = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, []); // Executa a função fetchUsers apenas na montagem inicial do componente
+  }, []);
 
   const addUser = (user) => {
     setUsers([...users, user]);
   };
 
   return (
-    <div>
-      <h1>User Management App</h1>
-      <Form addUser={addUser} />
-      <Chart data={users} />
-      <Table data={users} />
-    </div>
+    <StyledApp>
+       <UseForm addUser={addUser} />
+      <ChartAndTableContainer>
+        <UseTable data={users} />
+        <UseChart data={users} />
+      </ChartAndTableContainer>
+    </StyledApp>
   );
 };
 

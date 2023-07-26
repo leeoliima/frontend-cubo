@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { Button, UseForms } from "./styledForm";
 
 const UseForm = ({ addUser }) => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    participation: '',
+    first_name: "", 
+    last_name: "", 
+    participation: "",
   });
 
   const handleChange = (e) => {
@@ -17,32 +18,47 @@ const UseForm = ({ addUser }) => {
     e.preventDefault();
 
     try {
-      await axios.post('/create', formData);
-      alert('User created successfully!');
+      await axios.post("http://localhost:3003/create", formData);
+      alert("User created successfully!");
       addUser(formData);
-      setFormData({ firstName: '', lastName: '', participation: '' });
+      setFormData({ first_name: "", last_name: "", participation: "" });
     } catch (error) {
       console.error(error);
-      alert('Error creating user.');
+      alert("Error creating user.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <UseForms onSubmit={handleSubmit}>
       <label>
-        First Name:
-        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="First Name"
+          name="first_name"
+          value={formData.first_name}
+          onChange={handleChange}
+        />
       </label>
       <label>
-        Last Name:
-        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="Last Name"
+          name="last_name"
+          value={formData.last_name}
+          onChange={handleChange}
+        />
       </label>
       <label>
-        Participation:
-        <input type="number" name="participation" value={formData.participation} onChange={handleChange} />
+        <input
+          type="number"
+          placeholder="Participation"
+          name="participation"
+          value={formData.participation}
+          onChange={handleChange}
+        />
       </label>
-      <button type="submit">Send</button>
-    </form>
+      <Button type="submit">SEND</Button>
+    </UseForms>
   );
 };
 
