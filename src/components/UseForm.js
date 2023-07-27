@@ -4,8 +4,8 @@ import { Button, UseForms } from "./styledForm";
 
 const UseForm = ({ addUser }) => {
   const [formData, setFormData] = useState({
-    first_name: "", 
-    last_name: "", 
+    first_name: "",
+    last_name: "",
     participation: "",
   });
 
@@ -18,11 +18,25 @@ const UseForm = ({ addUser }) => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:3003/create", formData);
+      const userDTO = {
+        firstName: formData.first_name,
+        lastName: formData.last_name,
+        participation: formData.participation,
+      };
+
+      // Enviando a requisição POST com os dados no formato UserDTO
+      const response = await axios.post(
+        "https://backend-cubo.onrender.com/create",
+        userDTO
+      );
       alert("User created successfully!");
-      addUser(formData);
+
+      // Chamando a função addUser com os dados do usuário criado
+      addUser(response.data);
+
       setFormData({ first_name: "", last_name: "", participation: "" });
-    } catch (error) {
+      window.location.reload();} 
+    catch (error) {
       console.error(error);
       alert("Error creating user.");
     }
