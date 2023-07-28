@@ -1,9 +1,12 @@
-<h1>Case Cubo Frontend</h1>
+<h1>Case Cubo Fullstack</h1>
 
 <img src="https://github.com/leeoliima/frontend-cubo/assets/96210622/8d6ef78c-9095-4abe-9fc7-df79f666ff87" alt="Imagem do Projeto">
 
 <h2>📲 Link do deploy</h2>
-<p>Use a aplicação em <a href="https://frontend-cubo.vercel.app/" target="_blank">https://frontend-cubo.vercel.app/</a></p>
+<p>Use a aplicação em: <a href="https://frontend-cubo.vercel.app/" target="_blank">https://frontend-cubo.vercel.app/</a></p>
+
+<h2>📲 Link do deploy Render do backend</h2>
+<p><a href="https://backend-cubo.onrender.com" target="_blank">https://backend-cubo.onrender.com</a></p>
 
 <h2>📲 Link da documentação Postman</h2>
 <p><a href="https://documenter.getpostman.com/view/22376244/2s9XxsWcMw" target="_blank">https://documenter.getpostman.com/view/22376244/2s9XxsWcMw</a></p>
