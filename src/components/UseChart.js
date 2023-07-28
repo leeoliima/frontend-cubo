@@ -1,9 +1,9 @@
-import React from 'react';
-import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
-import 'chart.js/auto';
-import { StyledChart } from './styledChart';
+import React from "react";
+import { Chart, DoughnutController, Tooltip, Legend } from "chart.js";
+import "chart.js/auto";
+import { StyledChart } from "./styledChart";
 
-Chart.register(ArcElement, Tooltip, Legend);
+Chart.register(DoughnutController, Tooltip, Legend);
 
 const UseChart = ({ data }) => {
   const chartData = {
@@ -11,7 +11,13 @@ const UseChart = ({ data }) => {
     datasets: [
       {
         data: data.map((user) => user.participation),
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#4BC0C0",
+          "#9966FF",
+        ],
       },
     ],
   };
@@ -21,8 +27,8 @@ const UseChart = ({ data }) => {
       tooltip: {
         callbacks: {
           label: (context) => {
-            const label = context.label || '';
-            const value = context.formattedValue || '';
+            const label = context.label || "";
+            const value = context.formattedValue || "";
             return `${label}: ${value}%`;
           },
         },
@@ -30,7 +36,7 @@ const UseChart = ({ data }) => {
     },
   };
 
-  return <StyledChart data={chartData} options={options} />;
+  return <StyledChart type="doughnut" data={chartData} options={options} />;
 };
 
 export default UseChart;

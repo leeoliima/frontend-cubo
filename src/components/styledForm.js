@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
 export const UseForms = styled.form`
-  /* Estilos gerais do formulário */
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #00b8e2;
   margin-bottom: 50px;
-  padding: 10px;
+  padding: 30px;
   padding-left: 30px;
-  width: 100%; 
+  width: 100%;
+  
 
-  /* Estilos específicos para telas pequenas (até 600px) */
   @media (max-width: 600px) {
-    flex-direction: column; /* Empilha os elementos verticalmente */
+    flex-direction: column;
+    align-items: center;
+    display: flex;
   }
 
   input {
@@ -22,9 +23,8 @@ export const UseForms = styled.form`
     border: none;
     margin: 10px;
 
-    /* Estilos específicos para telas pequenas (até 600px) */
     @media (max-width: 600px) {
-      width: 100%; /* Ocupa 100% da largura */
+      width: 100%;
     }
   }
 `;
@@ -40,8 +40,7 @@ export const Button = styled.button`
   padding: 10px;
   margin: 10px;
 
-  /* Estilos específicos para telas pequenas (até 600px) */
   @media (max-width: 600px) {
-    width: 100%; /* Ocupa 100% da largura */
+    width: 100%;
   }
 `;

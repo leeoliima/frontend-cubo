@@ -24,19 +24,17 @@ const UseForm = ({ addUser }) => {
         participation: formData.participation,
       };
 
-      // Enviando a requisição POST com os dados no formato UserDTO
       const response = await axios.post(
         "https://backend-cubo.onrender.com/create",
         userDTO
       );
       alert("User created successfully!");
 
-      // Chamando a função addUser com os dados do usuário criado
       addUser(response.data);
 
       setFormData({ first_name: "", last_name: "", participation: "" });
-      window.location.reload();} 
-    catch (error) {
+      window.location.reload();
+    } catch (error) {
       console.error(error);
       alert("Error creating user.");
     }
